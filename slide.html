@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>slide</title>
+  <style>
+    .slide {
+      position: absolute;
+    }
+    .bai-slide {
+      display: none;
+    }
+    .bai-active {
+      display: block;
+    }
+    .slide-buttons {
+      top: 50%;
+      position: absolute;
+      transform: translateY(-50%);
+
+    }
+    .bai-button-left {
+      left: 0px;
+    }
+    .bai-button-right {
+      right: 0px;
+    }
+  </style>
+  <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+</head>
+<body>
+  <div class="slide" data-index="0" data-numbers="3">
+  <img class="bai-slide bai-active" src="1.jpg" alt="" />
+  <img class="bai-slide" src="2.jpg" alt="" />
+  <img class="bai-slide" src="3.jpg" alt="" />
+  <button class="slide-buttons bai-button-left">&lt</button>
+  <button class="slide-buttons bai-button-right">&gt</button>
+</div>
+  <script>
+    var log = function() {
+      console.log.apply(console, arguments)
+    }
+    $(".bai-button-left").on("click",function(){
+      var n = $(".slide").data("numbers")
+      var indexOf = $(".slide").data("index")
+      log(n,indexOf)
+      var i = (indexOf + n + 1) % n
+      $(".slide").data("index",i)
+      $(".bai-active").removeClass("bai-active")
+      $($(".bai-slide")[i]).addClass("bai-active")
+    })
+    $(".bai-button-right").on("click",function(){
+      var n = $(".slide").data("numbers")
+      var indexOf = $(".slide").data("index")
+      log(n,indexOf)
+      var i = (indexOf + n - 1) % n
+      $(".slide").data("index",i)
+      $(".bai-active").removeClass("bai-active")
+      $($(".bai-slide")[i]).addClass("bai-active")
+    })
+  </script>
+</body>
+</html>
