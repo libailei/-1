@@ -68,21 +68,27 @@
     $(".bai-button-left").on("click",function(){
       var n = $(".slide").data("numbers")
       var indexOf = $(".slide").data("index")
-      log(n,indexOf)
-      var i = (indexOf + n + 1) % n
+      var i = (indexOf + n - 1) % n
       $(".slide").data("index",i)
+      log(i)
       $(".bai-active").removeClass("bai-active")
       $($(".bai-slide")[i]).addClass("bai-active")
+      $(".indexColor").removeClass("indexColor")
+      $($(".slide-indicator")[i]).addClass("indexColor")
     })
 
     $(".bai-button-right").on("click",function(){
       var n = $(".slide").data("numbers")
       var indexOf = $(".slide").data("index")
       log(n,indexOf)
-      var i = (indexOf + n - 1) % n
+      var i = (indexOf + n + 1) % n
       $(".slide").data("index",i)
       $(".bai-active").removeClass("bai-active")
       $($(".bai-slide")[i]).addClass("bai-active")
+      $(".indexColor").removeClass("indexColor")
+      $($(".slide-indicato")[i]).addClass("indexColor")
+      $(".indexColor").removeClass("indexColor")
+      $($(".slide-indicator")[i]).addClass("indexColor")
     })
   </script>
 </body>
