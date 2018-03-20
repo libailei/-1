@@ -5,7 +5,10 @@
   <title>slide</title>
   <style>
     .slide {
-      position: absolute;
+      position: relative;
+      width: 300px;
+      height: 200px;
+      overflow: hidden;
     }
     .bai-slide {
       display: none;
@@ -25,17 +28,39 @@
     .bai-button-right {
       right: 0px;
     }
+    .slide-indicators {
+      text-align: center;
+      width: 300px;
+      bottom: 20px;
+      position: relative;
+  }
+    .slide-indicator {
+      display: inline-block;
+      background: white;
+      opacity: 0.8;
+      border-radius: 50%;
+    }
+    .indexColor {
+      background: red;
+    }
   </style>
   <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
 </head>
 <body>
-  <div class="slide" data-index="0" data-numbers="3">
-  <img class="bai-slide bai-active" src="1.jpg" alt="" />
-  <img class="bai-slide" src="2.jpg" alt="" />
-  <img class="bai-slide" src="3.jpg" alt="" />
-  <button class="slide-buttons bai-button-left">&lt</button>
-  <button class="slide-buttons bai-button-right">&gt</button>
-</div>
+  <div class="bSlide">
+    <div class="slide" data-index="0" data-numbers="3">
+    <img class="bai-slide bai-active" src="1.jpg" alt="" />
+    <img class="bai-slide" src="2.jpg" alt="" />
+    <img class="bai-slide" src="3.jpg" alt="" />
+    <button class="slide-buttons bai-button-left">&lt</button>
+    <button class="slide-buttons bai-button-right">&gt</button>
+  </div>
+  <div class="slide-indicators">
+    <div class="slide-indicator indexColor">1</div>
+    <div class="slide-indicator">2</div>
+    <div class="slide-indicator">3</div>
+    </div>
+  </div>
   <script>
     var log = function() {
       console.log.apply(console, arguments)
@@ -49,6 +74,7 @@
       $(".bai-active").removeClass("bai-active")
       $($(".bai-slide")[i]).addClass("bai-active")
     })
+
     $(".bai-button-right").on("click",function(){
       var n = $(".slide").data("numbers")
       var indexOf = $(".slide").data("index")
