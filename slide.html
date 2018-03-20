@@ -65,33 +65,7 @@
     var log = function() {
       console.log.apply(console, arguments)
     }
-  /*
-    $(".bai-button-left").on("click",function(){
-      var n = $(".slide").data("numbers")
-      var indexOf = $(".slide").data("index")
-      var i = (indexOf + n - 1) % n
-      $(".slide").data("index",i)
-      log(i)
-      $(".bai-active").removeClass("bai-active")
-      $($(".bai-slide")[i]).addClass("bai-active")
-      $(".indexColor").removeClass("indexColor")
-      $($(".slide-indicator")[i]).addClass("indexColor")
-    })
 
-    $(".bai-button-right").on("click",function(){
-      var n = $(".slide").data("numbers")
-      var indexOf = $(".slide").data("index")
-      log(n,indexOf)
-      var i = (indexOf + n + 1) % n
-      $(".slide").data("index",i)
-      $(".bai-active").removeClass("bai-active")
-      $($(".bai-slide")[i]).addClass("bai-active")
-      $(".indexColor").removeClass("indexColor")
-      $($(".slide-indicato")[i]).addClass("indexColor")
-      $(".indexColor").removeClass("indexColor")
-      $($(".slide-indicator")[i]).addClass("indexColor")
-    })
-*/
   var indexOfButton = function(offset) {
     var n = $(".slide").data("numbers")
     var indexOf = $(".slide").data("index")
@@ -99,9 +73,9 @@
     $(".slide").data("index",i)
 
   }
-  var playPrev = function() {
-    indexOfButton(-1)
+  var playPhoto = function(offset) {
     var i =  $(".slide").data("index")
+    indexOfButton(offset)
     $(".bai-active").removeClass("bai-active")
     $($(".bai-slide")[i]).addClass("bai-active")
     $(".indexColor").removeClass("indexColor")
@@ -109,22 +83,13 @@
     $(".indexColor").removeClass("indexColor")
     $($(".slide-indicator")[i]).addClass("indexColor")
   }
-  var playNext = function() {
-    indexOfButton(1)
-    var i =  $(".slide").data("index")
-    $(".bai-active").removeClass("bai-active")
-    $($(".bai-slide")[i]).addClass("bai-active")
-    $(".indexColor").removeClass("indexColor")
-    $($(".slide-indicato")[i]).addClass("indexColor")
-    $(".indexColor").removeClass("indexColor")
-    $($(".slide-indicator")[i]).addClass("indexColor")
-  }
+
   $(".slide-buttons").on("click",function(event){
     var buttons = $(event.target)
     if (buttons.hasClass("bai-button-left")) {
-      playPrev(-1)
+      playPhoto(-1)
     } else {
-      playNext(1)
+      playPhoto(1)
     }
   })
 
